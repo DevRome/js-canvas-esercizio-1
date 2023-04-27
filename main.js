@@ -19,14 +19,16 @@ window.addEventListener("resize", ()=>{
 // posizione iniziale
 let x = 200;
 let y = 200;
-
+let size = 100;
+let hue = 0;
 
 // disegna cerchio
 function drawCircle(){
+    hue++;
     ctx.beginPath();
-    ctx.fillStyle = "yellow";
+    ctx.fillStyle = `hsl(${hue}, 100%, 50%)`;
     ctx.strokeStyle = "red";
-    ctx.arc(x, y, 100, 0, Math.PI * 2);
+    ctx.arc(x, y, size, 0, Math.PI * 2);
     ctx.fill();
     ctx.stroke();
 }
@@ -38,6 +40,7 @@ function animate(){
     ctx.clearRect(0, 0, canvas.width, canvas.height); // pulisci la canvas
     
     x++; // manda la palla avanti
+    size+=0.2;
 
     drawCircle();
 
@@ -56,6 +59,7 @@ function animate2(){
     ctx.clearRect(0, 0, canvas.width, canvas.height); // pulisci la canvas 
     
     x--; // manda la palla indietro
+    size-=0.3;
 
     drawCircle(); // disegna il cerchio
 
